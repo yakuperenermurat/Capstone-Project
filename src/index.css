@@ -1,0 +1,308 @@
+/* Genel Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Genel */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  margin: 0 1.5rem;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #4CAF50;
+}
+
+/* İçerik Alanı */
+.page-content {
+  margin-top: 5rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Liste Konteyneri */
+.list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive Grid */
+  gap: 1.5rem;
+  margin: 2rem 0;
+  list-style: none;
+  padding: 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Liste Elemanları */
+.list-container li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.list-container li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Liste Başlıkları */
+.list-container li strong {
+  font-size: 1.2rem;
+  color: #4CAF50;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Liste Sayıları */
+.list-container li span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Form Alanı */
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h1 {
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+/* Hata Mesajları */
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+}
+
+/* Başarı Mesajları */
+.success {
+  color: green;
+  font-size: 0.9rem;
+}
+
+/* Tablo */
+.table-container {
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Tablo Butonları */
+.table .actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.table .view-btn {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.table .edit-btn {
+  background-color: #FFC107;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.table .delete-btn {
+  background-color: #F44336;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.table .view-btn:hover {
+  background-color: #1976D2;
+}
+
+.table .edit-btn:hover {
+  background-color: #FFA000;
+}
+
+.table .delete-btn:hover {
+  background-color: #D32F2F;
+}
+
+/* Toast Mesajları */
+.Toastify__toast {
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+/* Detay Satırı */
+.details-row td {
+  background-color: #e8f5e9;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.details h3 {
+  color: #4CAF50;
+  margin-bottom: 0.5rem;
+}
+
+.details p {
+  margin: 0.2rem 0;
+}
