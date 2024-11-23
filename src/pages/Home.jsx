@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../api/api';
-
+// Home component to display an overview of the Library Management System
 const Home = () => {
+   // State to store counts of various entities in the system
   const [dataCounts, setDataCounts] = useState({
     authors: 0,
     books: 0,
@@ -9,8 +10,9 @@ const Home = () => {
     categories: 0,
     borrowings: 0,
   });
-
+// useEffect to fetch data when the component mounts
   useEffect(() => {
+    // Function to fetch counts of various entities from the API
     const fetchCounts = async () => {
       try {
         const [authors, books, publishers, categories, borrowings] = await Promise.all([
@@ -37,6 +39,7 @@ const Home = () => {
   }, []);
 
   return (
+    // Main container for the Home page
     <div className="page-content">
       <h1>Welcome to the Library Management System</h1>
       <ul className="list-container">
@@ -50,4 +53,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home; // Exporting the Home component for use in other parts of the application

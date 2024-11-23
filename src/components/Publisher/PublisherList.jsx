@@ -4,14 +4,19 @@ import { api } from '../../api/api';
 import { toast } from 'react-toastify';
 
 const PublisherList = () => {
+  // State to store the list of publishers
   const [publishers, setPublishers] = useState([]);
+  // State to track which publisher's details are being toggled
   const [selectedPublisherId, setSelectedPublisherId] = useState(null);
+  // State to handle and display errors
   const [error, setError] = useState("");
 
+  // Fetch publishers when the component is mounted
   useEffect(() => {
     fetchPublishers();
   }, []);
 
+  // Function to fetch the list of publishers from the backend
   const fetchPublishers = async () => {
     try {
       const response = await api.get('/publishers');
@@ -22,7 +27,7 @@ const PublisherList = () => {
       toast.error("Error fetching publishers");
     }
   };
-
+// Function to delete a publisher by ID
   const deletePublisher = async (id) => {
     try {
       await api.delete(`/publishers/${id}`);
@@ -33,17 +38,22 @@ const PublisherList = () => {
     }
   };
 
+  // Function to toggle the visibility of publisher details
   const toggleDetails = (id) => {
     setSelectedPublisherId(selectedPublisherId === id ? null : id);
   };
 
   return (
     <div className="page-content">
+      {/* Page heading */}
       <h1>Publishers</h1>
+      {/* Display error message if any */}
       {error && <div className="error">{error}</div>}
+      {/* Button to add a new publisher */}
       <Link to="/publishers/new">
         <button className="add-btn">Add New Publisher</button>
       </Link>
+      {/* Table displaying the list of publishers */}
       <div className="table-container">
         <table className="table">
           <thead>
@@ -81,6 +91,7 @@ const PublisherList = () => {
                     </button>
                   </td>
                 </tr>
+                {/* Details row: Display additional information for the selected publisher */}
                 {selectedPublisherId === publisher.id && (
                   <tr className="details-row">
                     <td colSpan="5">

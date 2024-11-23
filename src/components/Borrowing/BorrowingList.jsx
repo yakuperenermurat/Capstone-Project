@@ -4,46 +4,54 @@ import { api } from '../../api/api';
 import { toast } from 'react-toastify';
 
 const BorrowingList = () => {
+  // State to store the list of borrowings
   const [borrowings, setBorrowings] = useState([]);
+  // State to track the selected borrowing ID for viewing details
   const [selectedBorrowingId, setSelectedBorrowingId] = useState(null);
+  // State to handle and display errors
   const [error, setError] = useState("");
-
+// Fetch borrowings when the component is mounted
   useEffect(() => {
     fetchBorrowings();
   }, []);
-
+// Function to fetch the list of borrowings from the backend
   const fetchBorrowings = async () => {
     try {
-      const response = await api.get('/borrows');
-      setBorrowings(response.data);
-      setError("");
+      const response = await api.get('/borrows'); // API call to fetch borrowings
+      setBorrowings(response.data); // Update the state with the fetched data
+      setError(""); // Reset error state if data fetch is successful
     } catch {
-      setError("Error fetching borrowings");
-      toast.error("Error fetching borrowings");
+      setError("Error fetching borrowings"); // Set error message in case of failure
+      toast.error("Error fetching borrowings"); // Display error notification
     }
   };
-
+// Function to delete a borrowing record by its ID
   const deleteBorrowing = async (id) => {
     try {
-      await api.delete(`/borrows/${id}`);
-      fetchBorrowings();
-      toast.success("Borrowing record deleted successfully!");
+      await api.delete(`/borrows/${id}`); // API call to delete the borrowing
+      fetchBorrowings();  // Refresh the list of borrowings
+      toast.success("Borrowing record deleted successfully!"); // Display success notification
     } catch {
-      toast.error("Error deleting borrowing record");
+      toast.error("Error deleting borrowing record"); // Display error notification
+
     }
   };
-
+// Function to toggle the visibility of borrowing details
   const toggleDetails = (id) => {
+    // Toggle the selected borrowing ID
     setSelectedBorrowingId(selectedBorrowingId === id ? null : id);
   };
 
   return (
     <div className="page-content">
       <h1>Borrowings</h1>
+       {/* Display error message if any */}
       {error && <div className="error">{error}</div>}
+      {/* Link to navigate to the Add Borrowing form */}
       <Link to="/borrowings/new">
         <button className="add-btn">Add New Borrowing</button>
       </Link>
+      {/* Table to display the list of borrowings */}
       <div className="table-container">
         <table className="table">
           <thead>
@@ -56,6 +64,7 @@ const BorrowingList = () => {
             </tr>
           </thead>
           <tbody>
+            {/* Map through the list of borrowings and display each record */}
             {borrowings.map((borrowing) => (
               <React.Fragment key={borrowing.id}>
                 <tr>
@@ -64,15 +73,18 @@ const BorrowingList = () => {
                   <td>{borrowing.borrowingDate}</td>
                   <td>{borrowing.returnDate || "Not returned yet"}</td>
                   <td className="actions">
+                    {/* Button to toggle details visibility */}
                     <button
                       className="view-btn"
                       onClick={() => toggleDetails(borrowing.id)}
                     >
                       {selectedBorrowingId === borrowing.id ? "Hide" : "View"}
                     </button>
+                    {/* Link to navigate to the Edit Borrowing form */}
                     <Link to={`/borrowings/edit/${borrowing.id}`}>
                       <button className="edit-btn">Edit</button>
                     </Link>
+                    {/* Button to delete the borrowing record */}
                     <button
                       className="delete-btn"
                       onClick={() => deleteBorrowing(borrowing.id)}
@@ -81,6 +93,7 @@ const BorrowingList = () => {
                     </button>
                   </td>
                 </tr>
+                {/* Conditional rendering for borrowing details */}
                 {selectedBorrowingId === borrowing.id && (
                   <tr className="details-row">
                     <td colSpan="5">

@@ -4,6 +4,7 @@ import '../index.css';
 
 const Navbar = () => {
   return (
+    // Navigation bar container
     <nav className="navbar">
       <ul>
         <li><Link to="/">Home</Link></li>
@@ -17,4 +18,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar; // Exporting the Navbar component to be used in other parts of the application
