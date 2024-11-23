@@ -38,7 +38,6 @@ const BookList = () => {
     } catch (err) {
       toast.error("Error deleting book");  // Show error notification
     }
-    }
   };
 
   // Function to toggle the display of book details
@@ -99,7 +98,6 @@ const BookList = () => {
                     </button>
                   </td>
                 </tr>
-                {/* Show book details if the current book is selected */}
                 {selectedBookId === book.id && (
                   <tr className="details-row">
                     <td colSpan="5">
